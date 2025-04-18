@@ -1,0 +1,31 @@
+---
+title: "mongodb"
+author: 'Isaac Amouzou G#: G01307253'
+date: "2025-04-16"
+output: html_document
+---
+
+# Activity 5
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(mongolite)
+```
+
+```{r}
+pheno_conn <- mongo(collection = "phenology",
+                      db = "cherry",
+                      url = "mongodb+srv://stat507student:ItookSTAT507inSpring25@cluster0.7vw4cpv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+```
+
+```{r}
+pheno_conn$find('{
+  "Site_ID": 3,
+  "Observation_Date": { "$lt": "2020-12-31" }
+}')
+```
+
+
